@@ -18,16 +18,17 @@ struct LinearSceneView: View {
         "Second step of drawing  a Bezier curve"
     ]
     
-    let markdownGuideText: [AttributedString] = [
+    let markdownGuideTexts: [AttributedString] = [
         try! AttributedString(markdown: "We start with **two points** connected by a line segment. We can calculate the **third point** by using a formula called **Linear Interpolation** or lerp for short."),
-        try! AttributedString(markdown: "Second step of drawing a Bezier curve"),
+        try! AttributedString(markdown: "The lerp formula used is **(1-t)P0 + tP1**. Where **t** is like a percentage that determines where to position the third point."),
+        try! AttributedString(markdown: "Lets see it in action! We can use it to draw a line between **P1** and **P2**.")
     ]
     
     var body: some View {
         VStack{
             Title("Linear")
             LinearBezierView(t: $t, step: $step)
-            BottomView(t: $t, step: $step, finalStep: .second, markdownGuideTexts: markdownGuideText)
+            BottomView(t: $t, step: $step, finalStep: .third, markdownGuideTexts: markdownGuideTexts)
         }
     }
 }

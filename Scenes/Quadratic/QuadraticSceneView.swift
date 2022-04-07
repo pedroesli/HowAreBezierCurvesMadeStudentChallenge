@@ -14,16 +14,17 @@ struct QuadraticSceneView: View {
     @State private var step: Step = .first
     
     let markdownGuideText: [AttributedString] = [
-        try! AttributedString(markdown: "First step of drawing a Bezier curve"),
-        try! AttributedString(markdown: "Second step of drawing a Bezier curve"),
-        try! AttributedString(markdown: "Third step of drawing a Bezier curve"),
+        try! AttributedString(markdown: "How about making a **curve**? For that we can use a **Quadratic Bezier Curve**, that has three points."),
+        try! AttributedString(markdown: "We use lerp between **P1** And **P2**, then **P2** to **P3**."),
+        try! AttributedString(markdown: "We then use lerp again between those new points."),
+        try! AttributedString(markdown: "Finaly we get a curve that goes from the first point to the last point. **P2** is the control point")
     ]
     
     var body: some View {
         VStack{
             Title("Quadratic")
             QuadraticBezierView(t: $t, step: $step)
-            BottomView(t: $t, step: $step, finalStep: .third, markdownGuideTexts: markdownGuideText)
+            BottomView(t: $t, step: $step, finalStep: .fourth, markdownGuideTexts: markdownGuideText)
         }
     }
 }

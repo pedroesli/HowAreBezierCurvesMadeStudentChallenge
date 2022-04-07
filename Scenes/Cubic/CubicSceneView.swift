@@ -13,10 +13,10 @@ struct CubicSceneView: View {
     @State private var step: Step = .first
     
     let markdownGuideText: [AttributedString] = [
-        try! AttributedString(markdown: "First step of drawing a Bezier curve"),
-        try! AttributedString(markdown: "Second step of drawing a Bezier curve"),
-        try! AttributedString(markdown: "Third step of drawing a Bezier curve"),
-        try! AttributedString(markdown: "Fourth step of drawing a Bezier curve")
+        try! AttributedString(markdown: "The most common curve is the Cubic Bezier Curve, that uses two control points. They are **P2** and **P3**."),
+        try! AttributedString(markdown: "We repeat the same steps as before by applying lerp to each point."),
+        try! AttributedString(markdown: "Then we lerp between the green points to get our final and middle point."),
+        try! AttributedString(markdown: "And we are able to draw the curve. So it's basically **Linear Interpolation** all the way down to the last point.")
     ]
     
     var body: some View {

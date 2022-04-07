@@ -20,17 +20,7 @@ struct BottomView: View {
     
     var body: some View {
         VStack(spacing: 45){
-            // Info Text
-            Text(markdownGuideTexts[step.rawValue])
-                .foregroundColor(.white)
-                .font(Font.system(size: 40, weight: .regular, design: .rounded))
-                .minimumScaleFactor(0.5)
-                .padding()
-                .frame(width: 550, height: 150)
-                .background {
-                    RoundedRectangle(cornerRadius: 13)
-                        .foregroundColor(Color("LightGrayColor"))
-                }
+            InfoText(markdownGuideTexts[step.rawValue])
             ZStack{
                 NextButton {
                     if step == finalStep {
@@ -89,11 +79,34 @@ struct BottomView_Previews: PreviewProvider {
             step: .constant(.first),
             finalStep: .second,
             markdownGuideTexts: [
-                try! AttributedString(markdown: "Hello, **World!**"),
+                try! AttributedString(markdown: "Hello, **World!** This is a long text just for testing to see if it can fit well inside this rounded rectangle. And it seems that it does 😀."),
                 try! AttributedString(markdown: "My name is **Pedro**")
             ]
         )
+        .preferredColorScheme(.dark)
     }
 }
 
-//["Hello, World!", "My name is Pedro"]
+fileprivate struct InfoText: View {
+    
+    var text: AttributedString
+    
+    init(_ text: AttributedString){
+        self.text = text
+    }
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: 13)
+            .frame(height: 180)
+            .foregroundColor(Color("LightGrayColor"))
+            .padding(.horizontal, 60)
+            .overlay {
+                Text(text)
+                    .foregroundColor(.white)
+                    .font(Font.system(size: 40, weight: .regular, design: .rounded))
+                    .minimumScaleFactor(0.5)
+                    .padding(.horizontal, 60)
+                    .padding()
+            }
+    }
+}

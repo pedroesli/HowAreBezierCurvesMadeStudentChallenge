@@ -25,12 +25,12 @@ struct QuadraticBezierView: View {
             ZStack{
                 DashedLine(pointA: $p1, pointB: $p2)
                 DashedLine(pointA: $p2, pointB: $p3)
-                if step == .first {
+                if step == .first || step == .second{
                     // Show only the green points
                     InterpolationLine(pointA: $p1, pointB: $p2, pointC: $p3, t: $t, hideLine: true)
                         .foregroundColor(.green)
                 }
-                else if step == .second {
+                else if step == .third {
                     // Show the interpolation between those green points with the line
                     InterpolationLine(pointA: $p1, pointB: $p2, pointC: $p3, t: $t)
                         .foregroundColor(.green)

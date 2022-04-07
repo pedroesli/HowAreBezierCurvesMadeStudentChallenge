@@ -19,7 +19,7 @@ struct LinearBezierView: View {
             let frame = geometry.frame(in: .local)
             ZStack{
                 DashedLine(pointA: $p1, pointB: $p2)
-                if step == .first {
+                if step == .first || step == .second {
                     CirclePoint(pointA: $p1, pointB: $p2, t: $t)
                         .foregroundColor(.green)
                 }
