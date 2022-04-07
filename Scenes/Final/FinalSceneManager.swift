@@ -40,7 +40,7 @@ final class FinalSceneManager: ObservableObject {
     }
     var asteroidFrames: [CGRect] = []
     var earthFrame: CGRect = CGRect.zero
-    var simpleTimer = SimpleTimer()
+    var simpleTimer = SimpleTimer(timeInterval: 0.05)
     
     //MARK: Initializers
     init(){
@@ -65,7 +65,7 @@ final class FinalSceneManager: ObservableObject {
             }
         }
         // Earth collision check
-        if earthFrame.intersects(spaceshipFrame) {
+        if spaceshipFrame.intersects(earthFrame) {
             didCollideWithEarth = true
         }
     }

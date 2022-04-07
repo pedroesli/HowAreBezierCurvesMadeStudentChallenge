@@ -15,7 +15,8 @@ struct FinalSceneView: View {
         VStack {
             GeometryReader { geometry in
                 let frame = geometry.frame(in: .local)
-                let earthPosition = CGPoint(x: geometry.size.width - 150, y: 100)
+                let earthPosition = CGPoint(x: geometry.size.width - 150, y: frame.minY + 100)
+                // let earthPosition = CGPoint(x: geometry.size.width - 150, y: 100) Wont work because of y position
                 let mid = CGPoint(
                     x: geometry.size.width / 2,
                     y: geometry.size.height / 2
@@ -65,6 +66,7 @@ struct FinalSceneView: View {
                         .resizable()
                         .frame(width: 175.64, height: 134.65)
                         .position(manager.spaceshipPosition)
+                    
                 }
                 .onAppear {
                     manager.registerAsteroid(frame: asteroid1Frame)
