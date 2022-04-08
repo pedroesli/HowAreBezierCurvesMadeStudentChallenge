@@ -7,6 +7,7 @@
 
 enum InteractiveScene: Int {
     case introduction
+    case tutorial
     case linear
     case quadratic
     case cubic

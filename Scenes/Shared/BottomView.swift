@@ -86,27 +86,3 @@ struct BottomView_Previews: PreviewProvider {
         .preferredColorScheme(.dark)
     }
 }
-
-fileprivate struct InfoText: View {
-    
-    var text: AttributedString
-    
-    init(_ text: AttributedString){
-        self.text = text
-    }
-    
-    var body: some View {
-        RoundedRectangle(cornerRadius: 13)
-            .frame(height: 180)
-            .foregroundColor(Color("LightGrayColor"))
-            .padding(.horizontal, 60)
-            .overlay {
-                Text(text)
-                    .foregroundColor(.white)
-                    .font(Font.system(size: 40, weight: .regular, design: .rounded))
-                    .minimumScaleFactor(0.5)
-                    .padding(.horizontal, 60)
-                    .padding()
-            }
-    }
-}

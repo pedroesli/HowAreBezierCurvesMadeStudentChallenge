@@ -65,6 +65,8 @@ final class FinalSceneManager: ObservableObject {
             }
         }
         // Earth collision check
+        //print("{Spaceship Origin: \(spaceshipFrame.origin), frame: \(spaceshipFrame.size)} {Earth Origin: \(earthFrame.origin), frame: \(earthFrame.size)}")
+        print(spaceshipFrame.intersects(earthFrame))
         if spaceshipFrame.intersects(earthFrame) {
             didCollideWithEarth = true
         }

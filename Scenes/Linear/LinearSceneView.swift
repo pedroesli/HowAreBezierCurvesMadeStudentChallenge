@@ -13,11 +13,6 @@ struct LinearSceneView: View {
     @State private var t: CGFloat = 0 // Interpolation 0 <= t <= 1
     @State private var step: Step = .first
     
-    let guideText = [
-        "First step of drawing  a Bezier curve",
-        "Second step of drawing  a Bezier curve"
-    ]
-    
     let markdownGuideTexts: [AttributedString] = [
         try! AttributedString(markdown: "We start with **two points** connected by a line segment. We can calculate the **third point** by using a formula called **Linear Interpolation** or lerp for short."),
         try! AttributedString(markdown: "The lerp formula used is **(1-t)P0 + tP1**. Where **t** is like a percentage that determines where to position the third point."),

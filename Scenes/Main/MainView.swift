@@ -26,6 +26,9 @@ public struct MainView: View {
             if sceneManager.scene == .introduction {
                 IntroductionSceneView()
             }
+            if sceneManager.scene == .tutorial {
+                TutorialSceneView()
+            }
             else if sceneManager.scene == .linear {
                 LinearSceneView()
             }

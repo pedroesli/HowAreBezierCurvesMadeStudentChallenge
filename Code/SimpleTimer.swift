@@ -10,13 +10,15 @@ import SwiftUI
 ///Just a Simple Timer with easy methods
 class SimpleTimer {
     
+    var timeInterval: TimeInterval
     private var timer: Timer!
-    private let timeInterval: TimeInterval
+    
     
     init(timeInterval: TimeInterval = 0.03 ) {
         self.timeInterval = timeInterval
     }
     
+    /// Will execute the block after the specified timeInterval
     func start(block: @escaping ()->Void) {
         timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { _ in
             block()

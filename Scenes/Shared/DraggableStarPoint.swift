@@ -21,6 +21,7 @@ struct DraggableStarPoint: View {
     @Binding var position: CGPoint
     var hightLimit: Limit
     var text: String
+    var stoppedDraggingAction: (() -> Void)?
     
     var body: some View {
         ZStack{
@@ -48,6 +49,9 @@ struct DraggableStarPoint: View {
                         // Move only in the bottom horizontal position
                         position = CGPoint(x: value.location.x, y: hightLimit.min)
                     }
+                })
+                .onEnded({ _ in
+                    stoppedDraggingAction?()
                 })
         )
     }
