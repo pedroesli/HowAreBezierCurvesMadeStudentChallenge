@@ -24,16 +24,16 @@ struct TutorialInteractiveView: View {
             GeometryReader { geometry in
                 let frame = geometry.frame(in: .local)
                 ZStack{
-                    DraggableStarPoint(position: $p1, hightLimit: DraggableStarPoint.Limit(max: frame.maxY, min: frame.minY), text: "P1") {
+                    DraggableStarPoint(position: $p1, text: "P1", frameLimit: frame) {
                         manager.movedStar()
                     }
-                    DraggableStarPoint(position: $p2, hightLimit: DraggableStarPoint.Limit(max: frame.maxY, min: frame.minY), text: "P2") {
+                    DraggableStarPoint(position: $p2, text: "P2", frameLimit: frame) {
                         manager.movedStar()
                     }
-                    DraggableStarPoint(position: $p3, hightLimit: DraggableStarPoint.Limit(max: frame.maxY, min: frame.minY), text: "P3") {
+                    DraggableStarPoint(position: $p3, text: "P3", frameLimit: frame) {
                         manager.movedStar()
                     }
-                    DraggableStarPoint(position: $p4, hightLimit: DraggableStarPoint.Limit(max: frame.maxY, min: frame.minY), text: "P4") {
+                    DraggableStarPoint(position: $p4, text: "P4", frameLimit: frame) {
                         manager.movedStar()
                     }
                     // Asteroid
@@ -64,6 +64,7 @@ struct TutorialInteractiveView: View {
                 manager.startTimer()
             }
         }
+        .padding(EdgeInsets(top: 25, leading: 26, bottom: 25, trailing: 26))
     }
 }
 

@@ -21,7 +21,7 @@ struct QuadraticSceneView: View {
     ]
     
     var body: some View {
-        VStack{
+        VStack(spacing: 0){
             Title("Quadratic")
             QuadraticBezierView(t: $t, step: $step)
             BottomView(t: $t, step: $step, finalStep: .fourth, markdownGuideTexts: markdownGuideText)

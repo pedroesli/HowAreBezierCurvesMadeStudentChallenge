@@ -78,6 +78,7 @@ struct FinalSceneView: View {
                     manager.reduceAsteroidFrameSize()
                 }
             }
+            .padding(EdgeInsets(top: 25, leading: 26, bottom: 25, trailing: 26))
             // Interpolation value text
             HStack{
                 Spacer()
@@ -153,10 +154,11 @@ fileprivate struct CubicBezier: View {
             })
             .foregroundColor(.cyan)
             
-            DraggableStarPoint(position: $p1, hightLimit: DraggableStarPoint.Limit(max: frame.maxY, min: frame.maxY - 200), text: "P1")
-            DraggableStarPoint(position: $p2, hightLimit: DraggableStarPoint.Limit(max: frame.maxY, min: frame.minY), text: "P2")
-            DraggableStarPoint(position: $p3, hightLimit: DraggableStarPoint.Limit(max: frame.maxY, min: frame.minY), text: "P3")
-            DraggableStarPoint(position: $p4, hightLimit: DraggableStarPoint.Limit(max: frame.maxY, min: frame.minY), text: "P4")
+            //TODO: Create a new frame that it limits y position to 200
+            DraggableStarPoint(position: $p1, text: "P1", frameLimit: frame)
+            DraggableStarPoint(position: $p2, text: "P2", frameLimit: frame)
+            DraggableStarPoint(position: $p3, text: "P3", frameLimit: frame)
+            DraggableStarPoint(position: $p4, text: "P4", frameLimit: frame)
         }
         .onAppear {
             p1 = CGPoint(x: frame.minX + 100, y: frame.maxY - 100)

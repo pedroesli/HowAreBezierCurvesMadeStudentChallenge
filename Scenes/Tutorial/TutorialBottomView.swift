@@ -24,6 +24,11 @@ struct TutorialBottomView: View {
                         sceneManager.nextScene()
                     }
                 }
+                else{
+                    Rectangle()
+                        .frame(width: 130, height: 80)
+                        .foregroundColor(.clear)
+                }
                 
                 // Show Slider only on the second step until the last step
                 if manager.step == .second || manager.step == .third{

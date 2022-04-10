@@ -20,7 +20,7 @@ struct CubicSceneView: View {
     ]
     
     var body: some View {
-        VStack{
+        VStack(spacing: 0){
             Title("Cubic")
             CubicBezierView(t: $t, step: $step)
             BottomView(t: $t, step: $step, finalStep: .fourth, markdownGuideTexts: markdownGuideText)

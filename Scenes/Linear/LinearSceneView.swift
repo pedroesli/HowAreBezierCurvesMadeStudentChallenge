@@ -20,7 +20,7 @@ struct LinearSceneView: View {
     ]
     
     var body: some View {
-        VStack{
+        VStack(spacing: 0){
             Title("Linear")
             LinearBezierView(t: $t, step: $step)
             BottomView(t: $t, step: $step, finalStep: .third, markdownGuideTexts: markdownGuideTexts)

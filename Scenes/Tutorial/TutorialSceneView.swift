@@ -14,7 +14,7 @@ struct TutorialSceneView: View {
     @StateObject private var manager = TutorialManager()
     
     var body: some View {
-        VStack{
+        VStack(spacing: 0){
             Title("Tutorial")
             TutorialInteractiveView(manager: manager)
             TutorialBottomView(manager: manager)
