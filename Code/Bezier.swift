@@ -22,7 +22,7 @@ struct Bezier {
     // c = 3(1-t)t²P2
     // d = t³P3
     // r = a + b + c + d
-    static func cubicInterpolation(pointA: CGPoint, pointB: CGPoint, pointC: CGPoint, pointD: CGPoint, t: CGFloat) -> CGPoint{
+    static func cubicInterpolation(pointA: CGPoint, pointB: CGPoint, pointC: CGPoint, pointD: CGPoint, t: CGFloat) -> CGPoint {
         let a = pow(1-t, 3) * pointA
         let b = 3 * pow(1-t, 2) * t * pointB
         let c = 3 * (1-t) * t * t * pointC

@@ -23,6 +23,7 @@ struct IntroductionSceneView: View {
             VStack{
                 HStack {
                     Image("Star")
+                        .rotationEffect(Angle.degrees(20))
                         .offset(x: 150, y: 20)
                     Spacer()
                     Image("Star")
@@ -31,9 +32,11 @@ struct IntroductionSceneView: View {
                 Spacer()
                 HStack {
                     Image("Star")
+                        .rotationEffect(Angle.degrees(10))
                         .offset(x: 25, y: 20)
                     Spacer()
                     Image("Star")
+                        .rotationEffect(Angle.degrees(-50))
                         .offset(x: -40, y: 200)
                 }
                 Spacer()
@@ -66,7 +69,7 @@ struct IntroductionSceneView: View {
                     .foregroundColor(.white)
                     .font(Font.system(size: 40, weight: .bold, design: .rounded))
                     .padding(.horizontal, 120)
-                    .padding(.top, 30)
+                    .padding(.top, 90)
                 Spacer()
                 NextButton(action: pressedNextButton)
             }

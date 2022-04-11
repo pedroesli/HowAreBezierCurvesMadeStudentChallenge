@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct TutorialSceneView: View {
     
     @StateObject private var manager = TutorialManager()
