@@ -14,15 +14,15 @@ class TutorialManager: ObservableObject {
     @Published var textIndex = 0
     
     private var tTimer: SimpleTimer = SimpleTimer()
-    private let guideTimeInterval: TimeInterval = 1.5
+    private let guideTimeInterval: TimeInterval = 2
     private var didMoveStar = false
     private var didMoveSlider = false
     
     let markdownGuideTexts: [AttributedString] = [
-        try! AttributedString(markdown: "Move a star to begin."),
+        try! AttributedString(markdown: "Move any star to begin."),
         try! AttributedString(markdown: "Nice job! 👏"),
-        try! AttributedString(markdown: "Now lets manualy control the animation"),
-        try! AttributedString(markdown: "Well done! 🥳 Now you'll learn about Bezier Curves. Have fun!")
+        try! AttributedString(markdown: "Now lets manualy control the animation."),
+        try! AttributedString(markdown: "Well done! 🥳 Now you'll learn how **Bezier Curves** are made. Enjoy!")
     ]
     
     func stopTimer() {

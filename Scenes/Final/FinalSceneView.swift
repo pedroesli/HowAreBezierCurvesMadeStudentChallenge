@@ -118,7 +118,7 @@ fileprivate struct CubicBezier: View {
     @Binding var t: CGFloat
     
     var frame: CGRect
-    var interpolationResultAction: ((InterpolationLine.InterpolationContainer) -> Void)?
+    var interpolationResultAction: ((InterpolationContainer) -> Void)?
     
     var body: some View {
         ZStack{
@@ -174,16 +174,30 @@ fileprivate struct CongratulationsView: View {
     
     @Binding var isPresenting: Bool
     
+    @EnvironmentObject private var sceneManager: SceneManager
+    
     var body: some View {
         if isPresenting {
             VStack {
-                Text("Congratulations! 👏 you helped Peter evade the asteroides and leanered how to use Bezier curves. I hope you enjoed this project and choose me as the winner. 😁")
+                Text("Congratulations! 👏 you helped Ana evade the asteroids and learned how Bezier Curves are made. I hope you enjoyed this interactive scene 😁. If you wish to replay all of the scenes again, just press the replay button.")
                     .foregroundColor(.white)
                     .font(Font.system(size: 40, weight: .bold, design: .rounded))
                     .minimumScaleFactor(0.5)
                     .padding(.horizontal, 40)
+                Button {
+                    sceneManager.scene = .introduction
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 13)
+                            .frame(width: 206, height: 80)
+                            .foregroundColor(.blue)
+                        Text("\(Image(systemName: "arrow.counterclockwise")) Replay")
+                            .font(Font.system(size: 32, weight: .bold, design: .rounded))
+                            .foregroundColor(.white)
+                    }
+                }
             }
-            .frame(width: 550, height: 500)
+            .frame(width: 550, height: 605)
             .background {
                 RoundedRectangle(cornerRadius: 13)
                     .foregroundColor(Color("LightGrayColor"))

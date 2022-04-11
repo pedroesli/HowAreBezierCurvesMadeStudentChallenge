@@ -10,11 +10,6 @@ import SwiftUI
 /// A line with two circle points to represent the points that are being interpolated, with the option of hiding the line.
 struct InterpolationLine: View {
     
-    struct InterpolationContainer: Equatable {
-        var qA: CGPoint = CGPoint.zero
-        var qB: CGPoint = CGPoint.zero
-    }
-    
     @State private var interpolationContainer = InterpolationContainer()
     @Binding var pointA: CGPoint
     @Binding var pointB: CGPoint

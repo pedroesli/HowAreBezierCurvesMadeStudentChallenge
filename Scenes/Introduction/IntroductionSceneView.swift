@@ -76,7 +76,7 @@ struct IntroductionSceneView: View {
         }
     }
     
-    func getCurrentStoryText() -> String{
+    func getCurrentStoryText() -> String {
         return storyText[currentStoryIndex]
     }
     
