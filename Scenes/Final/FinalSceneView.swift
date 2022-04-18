@@ -88,12 +88,12 @@ struct FinalSceneView: View {
                 Spacer()
             }
         }
+        .disabled(manager.isSceneDisabled)
         .overlay {
             ZStack{
                 BeginView(manager: manager)
                 CongratulationsView(isPresenting: $manager.didCollideWithEarth)
             }
-            
         }
     }
     
@@ -184,7 +184,7 @@ fileprivate struct CongratulationsView: View {
     var body: some View {
         if isPresenting {
             VStack {
-                Text("Congratulations! 👏 you helped Ana evade the asteroids and learned how Bezier Curves are made. I hope you enjoyed this interactive scene 😁. If you wish to replay all of the scenes again, just press the replay button.")
+                Text("Congratulations! 👏 You helped Ana evade the asteroids and learned how Bezier Curves are made. I hope you enjoyed this interactive scene 😁. If you wish to replay all of the scenes again, just press the replay button.")
                     .foregroundColor(.white)
                     .font(Font.system(size: 40, weight: .bold, design: .rounded))
                     .minimumScaleFactor(0.5)

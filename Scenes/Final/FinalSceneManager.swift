@@ -28,6 +28,7 @@ final class FinalSceneManager: ObservableObject {
         }
     }
     @Published var t: CGFloat = 0
+    @Published var isSceneDisabled = true
     
     //MARK: Properties
     var spaceshipFrame: CGRect {
@@ -60,8 +61,7 @@ final class FinalSceneManager: ObservableObject {
             }
         }
         // Earth collision check
-        //print("{Spaceship Origin: \(spaceshipFrame.origin), frame: \(spaceshipFrame.size)} {Earth Origin: \(earthFrame.origin), frame: \(earthFrame.size)}")
-        print(spaceshipFrame.intersects(earthFrame))
+        //print(spaceshipFrame.intersects(earthFrame))
         if spaceshipFrame.intersects(earthFrame) {
             didCollideWithEarth = true
         }
@@ -83,10 +83,12 @@ final class FinalSceneManager: ObservableObject {
     
     func startScene(){
         simpleTimer.start(block: tUpdate)
+        isSceneDisabled = false
     }
     
     func sceneFinished(){
         if didCollideWithEarth {
+            isSceneDisabled = true
             simpleTimer.stop()
         }
     }
