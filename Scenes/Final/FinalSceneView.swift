@@ -89,7 +89,11 @@ struct FinalSceneView: View {
             }
         }
         .overlay {
-            CongratulationsView(isPresenting: $manager.didCollideWithEarth)
+            ZStack{
+                BeginView(manager: manager)
+                CongratulationsView(isPresenting: $manager.didCollideWithEarth)
+            }
+            
         }
     }
     
@@ -102,6 +106,7 @@ struct FinalSceneView_Previews: PreviewProvider {
     }
 }
 
+// A cubic bezier curve without the red curve meant for just the final scene
 fileprivate struct CubicBezier: View {
     
     // Curve Points
@@ -198,6 +203,42 @@ fileprivate struct CongratulationsView: View {
                 }
             }
             .frame(width: 550, height: 605)
+            .background {
+                RoundedRectangle(cornerRadius: 13)
+                    .foregroundColor(Color("LightGrayColor"))
+            }
+        }
+    }
+}
+
+fileprivate struct BeginView: View {
+    
+    @ObservedObject var manager: FinalSceneManager
+    @State private var isPresenting: Bool = true
+    
+    var body: some View {
+        if isPresenting {
+            VStack(spacing: 40){
+                Text("Lets help Ana on her jorney back home by making a safe path for her. Good luck!")
+                    .foregroundColor(.white)
+                    .font(Font.system(size: 40, weight: .bold, design: .rounded))
+                    .minimumScaleFactor(0.5)
+                    .padding(.horizontal, 40)
+                Button {
+                    isPresenting = false
+                    manager.startScene()
+                } label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 13)
+                            .frame(width: 206, height: 80)
+                            .foregroundColor(.blue)
+                        Text("\(Image(systemName: "play.fill")) Begin")
+                            .font(Font.system(size: 32, weight: .bold, design: .rounded))
+                            .foregroundColor(.white)
+                    }
+                }
+            }
+            .frame(width: 550, height: 400)
             .background {
                 RoundedRectangle(cornerRadius: 13)
                     .foregroundColor(Color("LightGrayColor"))

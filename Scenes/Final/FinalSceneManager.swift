@@ -42,11 +42,6 @@ final class FinalSceneManager: ObservableObject {
     var earthFrame: CGRect = CGRect.zero
     var simpleTimer = SimpleTimer(timeInterval: 0.05)
     
-    //MARK: Initializers
-    init(){
-        simpleTimer.start(block: tUpdate)
-    }
-    
     //MARK: Methods
     func registerAsteroid(frame: CGRect) {
         asteroidFrames.append(frame)
@@ -84,6 +79,10 @@ final class FinalSceneManager: ObservableObject {
         if didCollideWithAsteroid {
             t = 0
         }
+    }
+    
+    func startScene(){
+        simpleTimer.start(block: tUpdate)
     }
     
     func sceneFinished(){
