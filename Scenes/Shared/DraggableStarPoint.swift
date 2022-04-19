@@ -24,6 +24,7 @@ struct DraggableStarPoint: View {
     var text: String
     var stoppedDraggingAction: (() -> Void)?
     
+    @State private var isDragging = false
     private var heightLimit: Limit
     private var widthLimit: Limit
     
@@ -60,6 +61,10 @@ struct DraggableStarPoint: View {
         .gesture(
             DragGesture()
                 .onChanged({ value in
+                    if !isDragging {
+                        isDragging = true
+                    }
+                    // Movement
                     if heightLimit.isWithinLimit(of: value.location.y) && widthLimit.isWithinLimit(of: value.location.x){
                         position = value.location
                     }
@@ -89,9 +94,18 @@ struct DraggableStarPoint: View {
                     }
                 })
                 .onEnded({ _ in
+                    isDragging = false
                     stoppedDraggingAction?()
                 })
         )
+        .onChange(of: isDragging) { isDragging in
+            let style: UIImpactFeedbackGenerator.FeedbackStyle = isDragging ? .rigid : .medium
+            haptics(style: style)
+        }
+    }
+    
+    func haptics(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        UIImpactFeedbackGenerator(style: style).impactOccurred()
     }
 }
 
