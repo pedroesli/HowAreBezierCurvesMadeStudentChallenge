@@ -39,6 +39,12 @@ struct FinalSceneView: View {
                     width: 113.35,
                     height: 91
                 )
+                let asteroid4Frame = CGRect(
+                    x: mid.x + 350,
+                    y: mid.y + 40,
+                    width: 59,
+                    height: 61
+                )
                 ZStack{
                     // Assets
                     Image("Earth")
@@ -57,6 +63,10 @@ struct FinalSceneView: View {
                         .resizable()
                         .frame(width: asteroid3Frame.width, height: asteroid3Frame.height)
                         .position(asteroid3Frame.origin)
+                    Image("Asteroid1")
+                        .resizable()
+                        .frame(width: asteroid4Frame.width, height: asteroid4Frame.height)
+                        .position(asteroid4Frame.origin)
                     // Cubic Bezier
                     CubicBezier(t: $manager.t, frame: frame) { interpolationResult in
                         manager.spaceshipPosition = Bezier.linearInterpolation(pointA: interpolationResult.qA, pointB: interpolationResult.qB, t: manager.t)
@@ -72,6 +82,7 @@ struct FinalSceneView: View {
                     manager.registerAsteroid(frame: asteroid1Frame)
                     manager.registerAsteroid(frame: asteroid2Frame)
                     manager.registerAsteroid(frame: asteroid3Frame)
+                    manager.registerAsteroid(frame: asteroid4Frame)
                     
                     manager.earthFrame = CGRect(x: earthPosition.x, y: earthPosition.y, width: 380 * 1.30, height: 380 * 1.30)
                     
