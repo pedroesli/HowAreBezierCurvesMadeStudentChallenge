@@ -203,6 +203,7 @@ fileprivate struct CongratulationsView: View {
                 }
             }
             .frame(width: 550, height: 605)
+            .transition(.scale.combined(with: .opacity))
             .background {
                 RoundedRectangle(cornerRadius: 13)
                     .foregroundColor(Color("LightGrayColor"))
@@ -225,7 +226,9 @@ fileprivate struct BeginView: View {
                     .minimumScaleFactor(0.5)
                     .padding(.horizontal, 40)
                 Button {
-                    isPresenting = false
+                    withAnimation(.easeOut) {
+                        isPresenting = false
+                    }
                     manager.startScene()
                 } label: {
                     ZStack {
@@ -239,6 +242,10 @@ fileprivate struct BeginView: View {
                 }
             }
             .frame(width: 550, height: 400)
+            .transition(.asymmetric(
+                insertion: .opacity,
+                removal: .scale.combined(with: .opacity))
+            )
             .background {
                 RoundedRectangle(cornerRadius: 13)
                     .foregroundColor(Color("LightGrayColor"))

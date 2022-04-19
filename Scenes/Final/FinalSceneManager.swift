@@ -63,7 +63,9 @@ final class FinalSceneManager: ObservableObject {
         // Earth collision check
         //print(spaceshipFrame.intersects(earthFrame))
         if spaceshipFrame.intersects(earthFrame) {
-            didCollideWithEarth = true
+            withAnimation(.spring()) {
+                didCollideWithEarth = true
+            }
         }
     }
     
